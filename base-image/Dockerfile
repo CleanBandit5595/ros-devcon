@@ -19,13 +19,15 @@ RUN apt-get autoremove -y \
 
 ENV DEBIAN_FRONTEND=dialog
 
-# Set up auto-source of workspace for ros user
-USER ros
-
 ARG WORKSPACE="/home/ros/dev_ws/"
 RUN mkdir -p ${WORKSPACE}
 
 COPY setup_docker_env.sh /tmp/
+RUN ["chmod", "+x", "/tmp/setup_docker_env.sh"]
 RUN /tmp/setup_docker_env.sh
+
+# Set up auto-source of workspace for ros user
+USER ros
+
 WORKDIR ${WORKSPACE}
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
