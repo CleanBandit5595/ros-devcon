@@ -1,0 +1,38 @@
+{
+    "dockerFile": "Dockerfile",
+    "build": {
+
+    },
+    "remoteUser": "ros",
+    "runArgs": [
+        "--network=host",
+		"--cap-add=SYS_PTRACE",
+		"--security-opt=seccomp:unconfined",
+		"--security-opt=apparmor:unconfined",
+		"--volume=/tmp/.X11-unix:/tmp/.X11-unix"
+    ],
+    "containerEnv": {
+        "DISPLAY": "${localEnv:DISPLAY}"
+    },
+    "settings": {
+		"terminal.integrated.profiles.linux": {
+			"bash": {
+				"path": "bash"
+			}
+		},
+		"terminal.integrated.defaultProfile.linux": "bash"
+    },
+    "extensions": [
+        "${localWorkspaceFolder}/vs-ext/DotJoshJohnson.xml-2.5.1.vsix",
+        "${localWorkspaceFolder}/vs-ext/ms-azuretools.vscode-docker-1.23.3.vsix",
+        "${localWorkspaceFolder}/vs-ext/ms-iot.vscode-ros-0.8.4.vsix",
+        "${localWorkspaceFolder}/vs-ext/ms-python.python-2023.1.10271009.vsix",
+        "${localWorkspaceFolder}/vs-ext/ms-vscode.cpptools-1.14.0@linux-arm64.vsix",
+        "${localWorkspaceFolder}/vs-ext/redhat.vscode-yaml-1.11.10112022.vsix",
+        "${localWorkspaceFolder}/vs-ext/smilerobotics.urdf-0.3.0.vsix",
+        "${localWorkspaceFolder}/vs-ext/streetsidesoftware.code-spell-checker-2.15.0.vsix",
+        "${localWorkspaceFolder}/vs-ext/twxs.cmake-0.0.17.vsix",
+        "${localWorkspaceFolder}/vs-ext/yzhang.markdown-all-in-one-3.5.0.vsix",
+        "${localWorkspaceFolder}/vs-ext/zachflower.uncrustify-3.2.0.vsix"
+	]
+}
